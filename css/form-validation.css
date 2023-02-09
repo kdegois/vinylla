@@ -1,0 +1,11 @@
+.container {
+    max-width: 600px;
+}
+
+.error {
+    background-color:  red;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
