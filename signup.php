@@ -12,7 +12,7 @@ if (isset($_POST["submit"])){
     $password = md5($_POST["password"]);
     $passwordRepeat = $_POST["password_repeat"];
 
-    $sql = "INSERT INTO users (email, password, first_name, last_name) VALUES ('$email','$password', '$firstName', '$lastName');";
+    $sql = "INSERT INTO user (email, password, first_name, last_name) VALUES ('$email','$password', '$firstName', '$lastName');";
 
     if(mysqli_query($conn, $sql)){
         $success = "Account created added successfully!";

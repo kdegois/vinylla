@@ -53,7 +53,7 @@ require_once("includes/dbconnect.inc.php");
                     $filters = " AND title LIKE '%$term%'";
                 }
 
-                $sql = "SELECT * FROM listings WHERE listing_id$filters ORDER BY datetime_posted DESC";
+                $sql = "SELECT * FROM listing WHERE listing_id$filters ORDER BY datetime_posted DESC";
 
                 $result = mysqli_query($conn, $sql);
 
@@ -61,7 +61,7 @@ require_once("includes/dbconnect.inc.php");
                 if (mysqli_num_rows($result) >= 1){
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
-                        echo "<h4>" . $row['title'] . "</h4>";
+                        echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
                         echo "<ul>";
                         echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
                         echo "<li>Posted: " . $row['datetime_posted'] . "</li>";

@@ -31,13 +31,13 @@ require_once("includes/dbconnect.inc.php");
 
                     $listingID = $_GET['listing_id'];
 
-                    $sql = "SELECT * FROM listings WHERE listing_id = $listingID";
+                    $sql = "SELECT * FROM listing WHERE listing_id = $listingID";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) == 1) {
                         $row = mysqli_fetch_assoc($result);
 
-                        echo "<h3>" . $row['title'] . "</h3>";
+                        echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
                         echo "<p>" . $row['description'] . "</p>";
                         echo "<ul>";
                         echo "<li>Price: £" . $row['price'] . "</li>";
