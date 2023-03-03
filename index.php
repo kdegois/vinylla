@@ -4,6 +4,8 @@ require_once "includes/functions.inc.php";
 
 ?>
 
+<!-- test -->
+
 <!doctype html>
 <html lang="en">
     <head>
