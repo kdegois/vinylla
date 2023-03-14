@@ -43,7 +43,7 @@ require_once("includes/dbconnect.inc.php");
                         echo "<li>Price: £" . $row['price'] . "</li>";
                         echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
                         echo "</ul>";
-
+                        echo "<button> add to basket</button";
                     }
 
                     else {

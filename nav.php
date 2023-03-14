@@ -24,6 +24,7 @@
           }
           ?>
         </ul>
+        <a href = "Basket.php"><img src = "Basket.PNG" alt = "basket"></img></a>
         <form class="d-flex" action="search.php" method="get">
           <input class="form-control me-2" name ="term" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
