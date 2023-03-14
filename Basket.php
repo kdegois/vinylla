@@ -13,7 +13,7 @@ require_once("includes/dbconnect.inc.php");
     <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-    <title>Vinylla</title>
+    <title>Vinylla - Basket</title>
 </head>
 <body>
     <?php include "nav.php"?>
