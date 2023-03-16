@@ -41,3 +41,5 @@ if(isset($_POST['logout'])) {
     </form>
 </body>
 </html>
+
+<!-- not sure if commit is working for me, jut checking--> 
