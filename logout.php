@@ -8,19 +8,19 @@ logout();
 ?>
 */
 
-session_start(); // start the session
+session_start(); 
 
 if(isset($_POST['logout'])) {
-    // if user clicked on logout button
+    
     if($_POST['logout'] == 'yes') {
-        // clear the session data and destroy the session
+        
         session_unset();
         session_destroy();
-        header("Location: login.php"); // redirect to login page
+        header("Location: login.php"); 
         exit();
     } else {
-        // if user clicked on cancel button
-        header("Location: index.php"); // redirect to home page
+        
+        header("Location: index.php"); 
         exit();
     }
 }
