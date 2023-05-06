@@ -42,7 +42,7 @@ require_once "includes/functions.inc.php";
         <!-- Begin page content -->
         <main class="flex-shrink-0 form-signin" style="max-width: 600px;">
             <div class="container">
-                <h4>Find that vinyl you're after</h4>
+                <h4>Find that vinyl you're after!</h4>
                 <!-- searchbox form -->
                 <form style="background-color: #f5f5f5;" action="search.php" method="get" class="find needs-validation" novalidate>
                     <input class="form-control me-2" name ="term" type="search" placeholder="Search by Artist, Album, Single, Etc.." aria-label="Search">

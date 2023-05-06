@@ -16,13 +16,15 @@ require_once("includes/dbconnect.inc.php");
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <link href="css/view-ad.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="min-vh-100">
 
         <?php include "nav.php"?>
         
         <!-- Begin page content -->
-        <main class="flex-shrink-0">
+        <!-- <main > -->
+            <div class="flex-fill">
             <div class="container">
 
                 <?php
@@ -62,9 +64,27 @@ require_once("includes/dbconnect.inc.php");
                 
                 ?>
             </div>
-        </main>
+            </div>
+
+        <!-- </main> -->
 
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.bundle.min.js"></script>
+        <footer>
+                <div class="footercontaine">
+        <div class="footer-links">
+            <div>
+                <p>&copy; 2023 Vinylla. All rights reserved.</p>
+            </div>
+            <div>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+                    <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        </footer>
     </body>
-</html>
+    </html>
