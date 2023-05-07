@@ -12,7 +12,7 @@
             <a class="nav-link" href="search.php">Recent</a>
           </li>
           <li id="create-ad" class="nav-item">
-            <a class="nav-link" href="create-ad.php">Create Ad</a>
+            <a class="nav-link" href="create-ad.php">Post Ad</a>
           </li>
           <?php
           if (loggedIn()==true){

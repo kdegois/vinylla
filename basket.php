@@ -21,6 +21,8 @@ require_once("includes/dbconnect.inc.php");
     </head>
     <body>
 
+        <?php include "nav.php"?>
+
         <!-- CART HERE -->
 
         <!-- Bootstrap JS -->
