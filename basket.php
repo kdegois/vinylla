@@ -2,43 +2,30 @@
 
 require_once "includes/functions.inc.php";
 require_once("includes/dbconnect.inc.php");
+
 ?>
 
-<!-- TEEEESSST --->
-<!-- TEEEESSST --->
-<!-- TEEEESSST --->
-<!-- TEEEESSST --->
-<!-- TEEEESSST --->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>Vinylla - Cart</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Main CSS -->
+        <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-    <title>Vinylla - Basket</title>
-</head>
-<style>
-            a.listing {
-                display: block;
-                color: var(--bs-body-color);
-                text-decoration: none;
-                padding: 20px;
-                margin: 20px 0;
-                border-radius: 5px;
-                background-color: #ccc;
-            }
-            a.listing:hover {
-                background-color: #ddd;
-            }
-            h3 {
-                padding-top: 20px;
-            }
-        </style>
-<body>
-    <?php include "nav.php"?>
-</body>
+    </head>
+    <body>
+
+        <!-- CART HERE -->
+
+        <!-- Bootstrap JS -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
+
+
 </html>
