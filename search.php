@@ -8,6 +8,7 @@ require_once("includes/dbconnect.inc.php");
 <!doctype html>
 <html lang="en">
     <head>
+        <script src="js/color-modes.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
@@ -21,16 +22,16 @@ require_once("includes/dbconnect.inc.php");
         <!-- Custom style for search page -->
         <style>
             a.listing {
+                background: rgba(0,0,0,0.2);;
                 display: block;
                 color: var(--bs-body-color);
                 text-decoration: none;
                 padding: 20px;
                 margin: 20px 0;
                 border-radius: 5px;
-                background-color: #ccc;
             }
             a.listing:hover {
-                background-color: #ddd;
+                background: rgba(0,0,0,0.3);;
             }
             h3 {
                 padding-top: 20px;

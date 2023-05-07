@@ -27,6 +27,7 @@ if (isset($_POST["submit"])){
 <!doctype html>
 <html lang="en">
     <head>
+        <script src="js/color-modes.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
@@ -40,7 +41,7 @@ if (isset($_POST["submit"])){
         <!-- Form-validation -->
         <link href="css/form-validation.css" rel="stylesheet">
     </head>
-    <body class="bg-light">
+    <body>
 
         <?php include "nav.php"?>
 

@@ -82,6 +82,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <!doctype html>
 <html lang="en">
     <head>
+        <script src="js/color-modes.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
@@ -147,5 +148,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
         </main>
         <script src="js/bootstrap.bundle.min.js"></script>
+        
     </body>
 </html>

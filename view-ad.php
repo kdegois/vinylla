@@ -23,6 +23,7 @@ if (isset($_post['add_to_basket'])) {
 <!doctype html>
 <html lang="en">
     <head>
+        <script src="js/color-modes.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
@@ -38,7 +39,7 @@ if (isset($_post['add_to_basket'])) {
         <!-- View Ad CSS -->
         <link href="css/view-ad.css" rel="stylesheet">
     </head>
-    <body class="min-vh-100">
+    <body>
 
         <?php include "nav.php"?>
         
@@ -58,8 +59,6 @@ if (isset($_post['add_to_basket'])) {
 
                     if (mysqli_num_rows($result) == 1) {
                         $row = mysqli_fetch_assoc($result);
-
-                        echo "<form method = 'post' action = 'index.php? id=<?= $row['id'] ?>'>";
                         echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
                         echo "<p>" . $row['description'] . "</p>";
                         echo "<ul>";

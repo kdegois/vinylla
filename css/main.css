@@ -1,5 +1,2 @@
 @import url('../node_modules/bootstrap-icons/font/bootstrap-icons.css');
-
-.cart-button {
-    display: inline-block;
-}
+@import url('light-dark.css');
