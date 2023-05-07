@@ -3,6 +3,21 @@
 require_once "includes/functions.inc.php";
 require_once("includes/dbconnect.inc.php");
 
+
+
+if (isset($_post['add_to_basket'])) {
+    if (isset($_SESSION['cart'])) {
+
+    }else{
+        $session_array = array(
+            'id' => $_GET['id'],
+            "name" => $_post['title'],
+            "price" => $_post['price']
+        );
+
+        $_SESSION['cart'][] = $session_array;
+    }
+}
 ?>
 
 <!doctype html>
@@ -39,13 +54,15 @@ require_once("includes/dbconnect.inc.php");
                     if (mysqli_num_rows($result) == 1) {
                         $row = mysqli_fetch_assoc($result);
 
+                        echo "<form method = 'post' action = 'index.php? id=<?= $row['id'] ?>'>";
                         echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
                         echo "<p>" . $row['description'] . "</p>";
                         echo "<ul>";
                         echo "<li>Price: £" . $row['price'] . "</li>";
                         echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
                         echo "</ul>";
-                        echo "<button> add to basket</button";
+                        echo "<input type = 'submit' name = 'add_to_basket' class = 'btn btn-warning' value = 'add to basket';>";
+                        echo "</form>";
                     }
 
                     else {
@@ -85,6 +102,10 @@ require_once("includes/dbconnect.inc.php");
             </div>
         </div>
     </div>
+
+    <?php
+    var_dump($_SESSION['cart']);
+?>
         </footer>
     </body>
     </html>

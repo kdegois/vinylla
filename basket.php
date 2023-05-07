@@ -21,6 +21,23 @@ require_once("includes/dbconnect.inc.php");
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <title>Vinylla - Basket</title>
 </head>
+<style>
+            a.listing {
+                display: block;
+                color: var(--bs-body-color);
+                text-decoration: none;
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 5px;
+                background-color: #ccc;
+            }
+            a.listing:hover {
+                background-color: #ddd;
+            }
+            h3 {
+                padding-top: 20px;
+            }
+        </style>
 <body>
     <?php include "nav.php"?>
 </body>
