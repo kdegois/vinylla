@@ -48,7 +48,7 @@ function createAd($title, $artist, $year, $price, $condition) {
     $stmt->bindParam(':title', $title);
     $stmt->bindParam(':artist', $artist);
     $stmt->bindParam(':year', $year);
-    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':price', $price):
     $stmt->bindParam(':condition', $condition);
 
     return $stmt->execute();
