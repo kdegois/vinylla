@@ -9,10 +9,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li id="search" class="nav-item">
-            <a class="nav-link" href="search.php">Recently posted</a>
+            <a class="nav-link" href="search.php">Recent</a>
           </li>
           <li id="create-ad" class="nav-item">
-            <a class="nav-link" href="create-ad.php">List your vinyl</a>
+            <a class="nav-link" href="create-ad.php">Create Ad</a>
           </li>
           <?php
           if (loggedIn()==true){
@@ -23,8 +23,10 @@
                   <li id=\"signup\" class=\"nav-item\"><a class=\"nav-link\" href=\"signup.php\">Signup</a></li>"; 
           }
           ?>
+          <li id="cart">
+            <a class="nav-link" href="basket.php"><i class="bi bi-cart"></i> Cart</a>
+          </li>
         </ul>
-        <a href = "Basket.php"><img src = "Basket.PNG" alt = "basket"></img></a>
         <form class="d-flex" action="search.php" method="get">
           <input class="form-control me-2" name ="term" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

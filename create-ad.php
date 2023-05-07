@@ -62,6 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <title>Vinylla - Create an Ad</title>
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Main CSS -->
+        <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     </head>

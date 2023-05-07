@@ -13,12 +13,14 @@ require_once "includes/functions.inc.php";
         <title>Vinylla</title>
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Main CSS -->
+        <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <!-- Form-validation -->
         <link href="css/form-validation.css" rel="stylesheet">
-        <!-- Custom styles for signin -->
-        <link href="css/signin.css" rel="stylesheet">
+        <!-- Index page CSS -->
+        <link href="css/index.css" rel="stylesheet">
         <style>
             body {
                 background-image: url('img/bg.jpg');
@@ -40,7 +42,7 @@ require_once "includes/functions.inc.php";
         <?php include "nav.php"?>
 
         <!-- Begin page content -->
-        <main class="flex-shrink-0 form-signin" style="max-width: 600px;">
+        <main class="flex-shrink-0 form-search" style="max-width: 600px;">
             <div class="container">
                 <h4>Find that vinyl you're after!</h4>
                 <!-- searchbox form -->

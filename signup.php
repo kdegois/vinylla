@@ -33,6 +33,8 @@ if (isset($_POST["submit"])){
         <title>Vinylla - Sign up</title>
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Main CSS -->
+        <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <!-- Form-validation -->

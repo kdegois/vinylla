@@ -29,8 +29,13 @@ if (isset($_post['add_to_basket'])) {
         <title>Vinylla - View Ad</title>
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Main CSS -->
+        <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <!-- Form-validation -->
+        <link href="css/form-validation.css" rel="stylesheet">
+        <!-- View Ad CSS -->
         <link href="css/view-ad.css" rel="stylesheet">
     </head>
     <body class="min-vh-100">
