@@ -39,8 +39,6 @@ function generateRandomString($length) {
     return $randomString;
 }
 
-require_once "includes/db.inc.php";
-
 function createAd($title, $artist, $year, $price, $condition) {
     global $pdo;
 
