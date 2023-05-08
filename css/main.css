@@ -1,2 +1,17 @@
 @import url('../node_modules/bootstrap-icons/font/bootstrap-icons.css');
 @import url('light-dark.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    padding-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    background: rgba(0,0,0,0.1);
+}

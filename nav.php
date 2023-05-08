@@ -17,15 +17,13 @@
           if (loggedIn()==true){
               echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";
               echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
+              echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\"><i class=\"bi bi-cart\"></i> Cart</a></li>";
           }
           else {
-            echo "<li id=\"login\" class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>
-                  <li id=\"signup\" class=\"nav-item\"><a class=\"nav-link\" href=\"signup.php\">Signup</a></li>"; 
+            echo "<li id=\"login\" class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>";
+            echo "<li id=\"signup\" class=\"nav-item\"><a class=\"nav-link\" href=\"signup.php\">Signup</a></li>";
           }
           ?>
-          <li id="cart">
-            <a class="nav-link" href="basket.php"><i class="bi bi-cart"></i> Cart</a>
-          </li>
         </ul>
         <form class="d-flex" action="search.php" method="get">
           <input class="form-control me-2" name ="term" type="search" placeholder="Search" aria-label="Search">

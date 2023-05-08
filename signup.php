@@ -114,6 +114,7 @@ if (isset($_POST["submit"])){
                 </div>
             </main>
         </div>
+        <?php include "footer.php"; ?>
 
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.bundle.min.js"></script>

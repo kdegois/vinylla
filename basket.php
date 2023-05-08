@@ -3,6 +3,12 @@
 require_once "includes/functions.inc.php";
 require_once("includes/dbconnect.inc.php");
 
+//If user is logged out send them to login page
+if (loggedIn() == false){
+    header("Location: login.php");
+    die();
+}
+
 ?>
 
 <!doctype html>
@@ -75,16 +81,19 @@ require_once("includes/dbconnect.inc.php");
                             echo "</ul>";
                             echo "</a>";
                         }
+                        echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                     }
                     else{
-                        echo "<h3>No results found</h3>";
-                        echo "<p>Your search has returned no results, please try again.</p>";
+                        echo "<h3>Your cart is empty</h3>";
+                        echo "<p>No items in your cart!</p>";
                     }
                 ?>
 
             </div>
         </main>
-
+        
+        <?php include "footer.php"; ?>
+        
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.bundle.min.js"></script>
     </body>
