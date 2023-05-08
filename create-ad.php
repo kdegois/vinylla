@@ -10,7 +10,7 @@ if (loggedIn() == false){
 
 if (isset($_POST["submit"])){
 
-    $userId = $_POST["user_id"];
+    $userId = $_SESSION['user_id'];
     $price = $_POST["price"];
     $artist = $_POST["artist"];
     $title = $_POST["title"];
@@ -69,10 +69,6 @@ if (isset($_POST["submit"])){
                     <h4>Post an Ad</h4>
                     
                     <form action="create-ad.php" method="post">
-                        <div class="form-group">
-                            <label for="title">User ID</label>
-                            <input type="text" class="form-control" id="userId" name="user_id">
-                        </div>
                         <div class="form-group">
                             <label for="price">Price</label>
                             <div class="input-group">
