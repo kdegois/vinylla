@@ -3,6 +3,10 @@
 require_once "includes/functions.inc.php";
 require_once "includes/dbconnect.inc.php";
 
+if (loggedIn() == false){
+    header("Location: login.php");
+}
+
 
 if (isset($_POST["submit"])){
 

@@ -13,11 +13,9 @@
           <li id="search" class="nav-item">
             <a class="nav-link" href="search.php">Recent</a>
           </li>
-          <li id="create-ad" class="nav-item">
-            <a class="nav-link" href="create-ad.php">Post Ad</a>
-          </li>
           <?php
           if (loggedIn()==true){
+              echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";
               echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
           }
           else {
