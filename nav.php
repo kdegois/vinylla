@@ -1,3 +1,8 @@
+<style>
+  .basket {
+    margin-right: 10px;
+  }
+</style>
 <header>
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -24,7 +29,7 @@
           }
           ?>
         </ul>
-        <a href = "Basket.php"><img src = "Basket.PNG" alt = "basket"></img></a>
+        <a href = "Basket.php"><img src = "./img/Basket.PNG" alt = "basket" class='basket' width="30" margin="10" ></img></a>
         <form class="d-flex" action="search.php" method="get">
           <input class="form-control me-2" name ="term" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

@@ -116,5 +116,7 @@ if (isset($_POST["submit"])){
         <script src="js/bootstrap.bundle.min.js"></script>
         <!-- Form Validation JS -->
         <script src="js/form-validation.js"></script>
+<?php include "footer.php" ?>
+
     </body>
 </html>

@@ -116,6 +116,8 @@ require_once("includes/dbconnect.inc.php");
 
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.bundle.min.js"></script>
+<?php include "footer.php" ?>
+
     </body>
 
 

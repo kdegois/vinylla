@@ -145,5 +145,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
         </main>
         <script src="js/bootstrap.bundle.min.js"></script>
+<?php include "footer.php" ?>
+
     </body>
 </html>
