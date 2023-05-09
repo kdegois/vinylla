@@ -9,6 +9,13 @@ if (loggedIn() == false){
     die();
 }
 
+//Delete listing
+
+if (isset($_POST['delete_item'])) {
+    $removeListingID = $_POST['delete_item'];
+    removeItemFromCart($conn, $removeListingID,1);
+}
+
 ?>
 
 <!doctype html>
@@ -53,39 +60,55 @@ if (loggedIn() == false){
             <div class="container">
 
                 <?php
-                
+
+                    $mysqlWhereStr = "";
+                    
+                    // Get the CSV from DB and turn it into an array
                     $sql = "SELECT * FROM cart WHERE user_id = 1";
-
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) >= 1){
                         while($row = mysqli_fetch_assoc($result)) {
-                            $listingIdArray = $row['item_id_1'];
+                            $listingIdArr = str_getcsv($row['listing_id_csv']);
                         }
-
                     }
 
-                    echo $listingIdArray;
-
-                    $sql = "SELECT * FROM listing WHERE listing_id = 1 OR listing_id=7";
-
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) >= 1){
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
-                            echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
-                            echo "<ul>";
-                            echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
-                            echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
-                            echo "</ul>";
-                            echo "</a>";
-                        }
-                        echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
-                    }
-                    else{
+                    // Check if the cart is empty and throw error
+                    if ($listingIdArr[0] == null){
                         echo "<h3>Your cart is empty</h3>";
                         echo "<p>No items in your cart!</p>";
+                    }
+                    else {
+
+                        // Create the mysql WHERE
+                        $first = true;
+                        foreach ($listingIdArr as $listingId) {
+                            if ($first) {
+                                $msqlWhereStr = "listing_id = " . $listingIdArr[0];
+                                $first = false;
+                            }
+                            else {
+                                $msqlWhereStr .= " OR listing_id = " . $listingId;
+                            }
+                        }
+
+                        $sql = "SELECT * FROM listing WHERE " . $msqlWhereStr;
+                        $result = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($result) >= 1){
+                            while($row = mysqli_fetch_assoc($result)) {
+                                echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
+                                echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
+                                echo "<ul>";
+                                echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
+                                echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
+                                echo "</ul>";
+                                echo "</a>";
+                                echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_item\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
+                            }
+                            //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
+                        }
+
                     }
                 ?>
 

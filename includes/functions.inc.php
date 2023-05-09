@@ -39,4 +39,48 @@ function generateRandomString($length) {
     return $randomString;
 }
 
+// Remove item from cart
+function removeItemFromCart($conn, $listingID, $userID){
+    $sql = "SELECT * FROM cart WHERE user_id = 1";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) >= 1){
+        while($row = mysqli_fetch_assoc($result)) {
+            $listingIdArr = str_getcsv($row['listing_id_csv']);
+        }
+    }
+    
+    // Remove occurrences from array
+    $inArr = true;
+    while($inArr){
+        if (in_array($listingID, $listingIdArr)){
+            $key = array_search($listingID, $listingIdArr); // Find
+            unset($listingIdArr[$key]); // Remove
+            $inArr = true;
+        }
+        else {
+            $inArr = false;
+        }
+    }
+
+    $listingIdArr = array_values($listingIdArr); // Clean up arrayßßß
+
+    // Make a new Str
+    $first = true;
+    foreach ($listingIdArr as $listingId) {
+        if ($first) {
+            $listingIdCSV = $listingIdArr[0];
+            $first = false;
+        }
+        else {
+            $listingIdCSV .= "," . $listingId;
+        }
+    }
+
+    $sql = "UPDATE cart SET listing_id_csv = '$listingIdCSV' WHERE user_id = $userID";
+    mysqli_query($conn, $sql);
+
+}
+
+
 ?>
