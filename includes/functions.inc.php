@@ -83,6 +83,50 @@ function removeItemFromCart($conn, $listingID, $userID){
 
 }
 
+// Remove item from wishlist
+function removeItemFromWishlist($conn, $listingID, $userID){
+    $sql = "SELECT * FROM user WHERE user_id = $userID";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) >= 1){
+        while($row = mysqli_fetch_assoc($result)) {
+            $listingArr = str_getcsv($row['wishlist']);
+        }
+    }
+
+    // Remove occurrences from array
+    $inArr = true;
+    while($inArr){
+        if (in_array($listingID, $listingArr)){
+            $key = array_search($listingID, $listingArr); // Find
+            unset($listingArr[$key]); // Remove
+            $inArr = true;
+        }
+        else {
+            $inArr = false;
+        }
+    }
+
+    $listingArr = array_values($listingArr); // Clean up array
+
+    // Make a new Str
+    $first = true;
+    $listingCSV = "";
+    foreach ($listingArr as $listingId) {
+        if ($first) {
+            $listingCSV = $listingArr[0];
+            $first = false;
+        }
+        else {
+            $listingCSV .= "," . $listingId;
+        }
+    }
+
+    $sql = "UPDATE user SET wishlist = '$listingCSV' WHERE user_id = $userID";
+    mysqli_query($conn, $sql);
+
+}
+
 // Add item to cart
 function addItemToCart($conn, $listingID, $userID){
     $sql = "SELECT * FROM user WHERE user_id = $userID";
@@ -121,6 +165,46 @@ function addItemToCart($conn, $listingID, $userID){
     mysqli_query($conn, $sql);
 
 }
+
+function addItemToWishlist($conn, $listingID, $userID){
+    $sql = "SELECT * FROM user WHERE user_id = $userID";
+    $result = mysqli_query($conn, $sql);
+
+    // Get existing str to array
+    if (mysqli_num_rows($result) >= 1){
+        while($row = mysqli_fetch_assoc($result)) {
+            if($row['wishlist'] != ""){
+                $listArr = str_getcsv($row['wishlist']);
+            }
+            else {
+                $listArr = [];
+            }
+        }
+    }
+
+    // Add item to array
+    array_push($listArr,$listingID);
+
+    $listArr = array_values($listArr);
+
+    // Make a new Str
+    $first = true;
+    foreach ($listArr as $listingId) {
+        if ($first) {
+            $listIdCSV = $listArr[0];
+            $first = false;
+        }
+        else {
+            $listIdCSV .= "," . $listingId;
+        }
+    }
+
+    $sql = "UPDATE user SET wishlist = '$listIdCSV' WHERE user_id = $userID";
+    mysqli_query($conn, $sql);
+
+}
+
+?>
 
 
 ?>

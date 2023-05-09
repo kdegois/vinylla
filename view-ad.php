@@ -17,7 +17,12 @@ if (isset($_POST['add_item'])) {
     addItemToCart($conn,$addListingID,$userID);
 }
 
+if (isset($_POST['add_itemw'])) {
+    $addListingID = $_POST['add_itemw'];
+    addItemToWishlist ($conn,$addListingID,$userID);
+}
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -65,6 +70,7 @@ if (isset($_POST['add_item'])) {
                             // Add to cart button (only when logged in)
                             if ($userID != 0){
                                 echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\">Add to basket</button></form>";
+                                echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-wishlist\" type=\"submit\" name=\"add_itemw\" value=\"" . $row['listing_id'] . "\">Add to wishlist</button></form>";
                             }
                         }
 

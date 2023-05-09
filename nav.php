@@ -19,6 +19,7 @@
               echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
               echo "<li id=\"contact\" class=\nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact us</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\"><i class=\"bi bi-cart\"></i> Cart</a></li>";
+              echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"wishlist.php\"</i> Wishlist</a></li>";
           }
           else {
             echo "<li id=\"login\" class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>";
