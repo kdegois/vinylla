@@ -41,12 +41,12 @@ function generateRandomString($length) {
 
 // Remove item from cart
 function removeItemFromCart($conn, $listingID, $userID){
-    $sql = "SELECT * FROM cart WHERE user_id = 1";
+    $sql = "SELECT * FROM user WHERE user_id = $userID";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) >= 1){
         while($row = mysqli_fetch_assoc($result)) {
-            $listingIdArr = str_getcsv($row['listing_id_csv']);
+            $listingIdArr = str_getcsv($row['cart']);
         }
     }
     
@@ -63,7 +63,47 @@ function removeItemFromCart($conn, $listingID, $userID){
         }
     }
 
-    $listingIdArr = array_values($listingIdArr); // Clean up arrayßßß
+    $listingIdArr = array_values($listingIdArr); // Clean up array
+
+    // Make a new Str
+    $first = true;
+    $listingIdCSV = "";
+    foreach ($listingIdArr as $listingId) {
+        if ($first) {
+            $listingIdCSV = $listingIdArr[0];
+            $first = false;
+        }
+        else {
+            $listingIdCSV .= "," . $listingId;
+        }
+    }
+
+    $sql = "UPDATE user SET cart = '$listingIdCSV' WHERE user_id = $userID";
+    mysqli_query($conn, $sql);
+
+}
+
+// Add item to cart
+function addItemToCart($conn, $listingID, $userID){
+    $sql = "SELECT * FROM user WHERE user_id = $userID";
+    $result = mysqli_query($conn, $sql);
+
+    // Get existing str to array
+    if (mysqli_num_rows($result) >= 1){
+        while($row = mysqli_fetch_assoc($result)) {
+            if($row['cart'] != ""){
+                $listingIdArr = str_getcsv($row['cart']);
+            }
+            else {
+                $listingIdArr = [];
+            }
+        }
+    }
+    
+    // Add item to array
+    array_push($listingIdArr,$listingID);
+
+    $listingIdArr = array_values($listingIdArr);
 
     // Make a new Str
     $first = true;
@@ -77,7 +117,7 @@ function removeItemFromCart($conn, $listingID, $userID){
         }
     }
 
-    $sql = "UPDATE cart SET listing_id_csv = '$listingIdCSV' WHERE user_id = $userID";
+    $sql = "UPDATE user SET cart = '$listingIdCSV' WHERE user_id = $userID";
     mysqli_query($conn, $sql);
 
 }

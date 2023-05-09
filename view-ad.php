@@ -3,21 +3,20 @@
 require_once "includes/functions.inc.php";
 require_once("includes/dbconnect.inc.php");
 
-
-
-if (isset($_post['add_to_basket'])) {
-    if (isset($_SESSION['cart'])) {
-
-    }else{
-        $session_array = array(
-            'id' => $_GET['id'],
-            "name" => $_post['title'],
-            "price" => $_post['price']
-        );
-
-        $_SESSION['cart'][] = $session_array;
-    }
+if (isset($_SESSION['user_id'])) {
+    $userID = $_SESSION['user_id'];
 }
+else {
+    $userID = 0; // Nobody
+}
+
+//Add item to basket
+
+if (isset($_POST['add_item'])) {
+    $addListingID = $_POST['add_item'];
+    addItemToCart($conn,$addListingID,$userID);
+}
+
 ?>
 
 <!doctype html>
@@ -44,72 +43,53 @@ if (isset($_post['add_to_basket'])) {
         <?php include "nav.php"?>
         
         <!-- Begin page content -->
-        <!-- <main > -->
-            <div class="flex-fill">
+        <main class="flex-shrink-0">
             <div class="container">
+                <div class="row">
+                    <?php
 
-                <?php
+                    if (isset($_GET['listing_id'])){
 
-                if (isset($_GET['listing_id'])){
+                        $listingID = $_GET['listing_id'];
 
-                    $listingID = $_GET['listing_id'];
+                        $sql = "SELECT * FROM listing WHERE listing_id = $listingID";
+                        $result = mysqli_query($conn, $sql);
 
-                    $sql = "SELECT * FROM listing WHERE listing_id = $listingID";
-                    $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) == 1) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
+                            echo "<p>" . $row['description'] . "</p>";
+                            echo "<span>Price: £" . $row['price'] . "</span>";
+                            echo "<br>";
+                            echo "<span>Posted: " . $row['datetime_posted'] . "</span>";
+                            // Add to cart button (only when logged in)
+                            if ($userID != 0){
+                                echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\">Add to basket</button></form>";
+                            }
+                        }
 
-                    if (mysqli_num_rows($result) == 1) {
-                        $row = mysqli_fetch_assoc($result);
-                        echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
-                        echo "<p>" . $row['description'] . "</p>";
-                        echo "<ul>";
-                        echo "<li>Price: £" . $row['price'] . "</li>";
-                        echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
-                        echo "</ul>";
-                        echo "<input type = 'submit' name = 'add_to_basket' class = 'btn btn-warning' value = 'add to basket';>";
-                        echo "</form>";
+                        else {
+                            echo "<h3>Listing not found</h3>";
+                            echo "<p>The listing has either been removed or never existed!</p>";
+                        }
+                        
                     }
 
                     else {
+
                         echo "<h3>Listing not found</h3>";
-                        echo "<p>The listing has either been removed or never existed!</p>";
+                        echo "<p>The URL is malformed.</p>";
+
                     }
                     
-                }
-
-                else {
-
-                    echo "<h3>Listing not found</h3>";
-                    echo "<p>The URL is malformed.</p>";
-
-                }
-                
-                ?>
+                    ?>
+                </div>
             </div>
-            </div>
+        </main>
 
-        <!-- </main> -->
+        <?php include "footer.php"; ?>
 
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.bundle.min.js"></script>
-        <footer>
-                <div class="footercontaine">
-        <div class="footer-links">
-            <div>
-                <p>&copy; 2023 Vinylla. All rights reserved.</p>
-            </div>
-            <div>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#">Terms of Use</a></li>
-                    <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <?php
-    var_dump($_SESSION['cart']);
-?>
-        </footer>
     </body>
     </html>

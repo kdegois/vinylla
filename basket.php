@@ -9,11 +9,12 @@ if (loggedIn() == false){
     die();
 }
 
-//Delete listing
+$userID = $_SESSION['user_id'];
 
+//Delete item from basket
 if (isset($_POST['delete_item'])) {
     $removeListingID = $_POST['delete_item'];
-    removeItemFromCart($conn, $removeListingID,1);
+    removeItemFromCart($conn, $removeListingID,$userID);
 }
 
 ?>
@@ -64,17 +65,17 @@ if (isset($_POST['delete_item'])) {
                     $mysqlWhereStr = "";
                     
                     // Get the CSV from DB and turn it into an array
-                    $sql = "SELECT * FROM cart WHERE user_id = 1";
+                    $sql = "SELECT * FROM user WHERE user_id = $userID";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) >= 1){
                         while($row = mysqli_fetch_assoc($result)) {
-                            $listingIdArr = str_getcsv($row['listing_id_csv']);
+                            $listingIdArr = str_getcsv($row['cart']);
                         }
                     }
 
                     // Check if the cart is empty and throw error
-                    if ($listingIdArr[0] == null){
+                    if ($listingIdArr[0] == ""){
                         echo "<h3>Your cart is empty</h3>";
                         echo "<p>No items in your cart!</p>";
                     }
