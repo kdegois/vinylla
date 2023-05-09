@@ -115,24 +115,14 @@ if (isset($_POST['delete_item'])) {
                         echo "<td>£ $total</td>";
                         echo "<br></br>";
                         echo "<a href 'basket.php?action=clearall'>";
-                        echo "<button class ='btn btn-warning'>clear ALL</button>";
+                        echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_all_item\" value=\"" . $row['listing_id'] . "\">Clear All</button></form>";
                         echo "</a>";
-                        echo"</tr>";
-                        
+                        echo"</tr>";                   
                     }
                 ?>
 
             </div>
         </main>
-        
-        <?php 
-        if(isset($_get['action'])){
-            if ($_get['action'] == "clearall"){
-                unset($_SESSION [$row['listing_id']]);
-            }
-        }
-
-        ?>
 
         <?php include "footer.php"; ?>
         
