@@ -106,24 +106,16 @@ if (isset($_POST['delete_item'])) {
                                 echo "</ul>";
                                 echo "</a>";
                                 echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_item\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
-                                $total = $total + $row['price'];
                             }
                             //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                         }
-                        echo "<tr>";
-                        echo "<td></b>Total Price </b></td>";
-                        echo "<td>£ $total</td>";
-                        echo "<br></br>";
-                        echo "<a href 'basket.php?action=clearall'>";
-                        echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_all_item\" value=\"" . $row['listing_id'] . "\">Clear All</button></form>";
-                        echo "</a>";
-                        echo"</tr>";                   
+
                     }
                 ?>
 
             </div>
         </main>
-
+        
         <?php include "footer.php"; ?>
         
         <!-- Bootstrap JS -->
