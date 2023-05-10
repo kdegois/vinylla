@@ -142,6 +142,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     </div>
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                    <div class="mt-4 text-center">
+                        <p>Don't have an account? <a href="signup.php">Signup here</a></p>
 
                     <p class="mt-5 mb-3 text-muted">&copy; Vinylla 2023 - UoP</p>
                 </form>
