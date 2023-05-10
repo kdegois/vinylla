@@ -18,7 +18,6 @@ if (isset($_POST['delete_itemwi'])) {
 }
 
 ?>
-<?php include "nav.php"?>
 
 <!doctype html>
 <html lang="en">
@@ -50,6 +49,9 @@ if (isset($_POST['delete_itemwi'])) {
             }
             h3 {
                 padding-top: 20px;
+            }
+            .remove-button {
+                float: right;
             }
         </style>
     </head>
@@ -100,14 +102,13 @@ if (isset($_POST['delete_itemwi'])) {
                 if (mysqli_num_rows($result) >= 1){
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
+                        echo "<form action=\"wishlist.php\" method=\"post\"><button class=\"btn btn-primary remove-button\" type=\"submit\" name=\"delete_itemwi\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
                         echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
                         echo "<ul>";
                         echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
                         echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
                         echo "</ul>";
                         echo "</a>";
-                        echo "<form action=\"wishlist.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_itemwi\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
-                        echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\">Add to basket</button></form>";
                     }
                     //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                 }
