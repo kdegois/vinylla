@@ -16,7 +16,13 @@
               echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\">Basket</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"wishlist.php\"</i> Wishlist</a></li>";
-              echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
+              echo '<li id="logout" class="nav-item">
+                  <a class="nav-link" href="logout.php" onclick="event.preventDefault(); document.getElementById(\'logout-form\').submit();">Logout</a>
+                  <form id="logout-form" action="logout.php" method="post" style="display: none;">
+                      <input type="hidden" name="logout" value="1">
+                  </form>
+              </li>';
+
           }
           else {
             echo "<li id=\"login\" class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>";
