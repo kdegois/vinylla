@@ -112,12 +112,12 @@ if (isset($_POST['delete_item'])) {
                                 echo "</a>";
                                 $total = $total + $row['price'];
                             }
-                            $vat = number_format((float)$total * 1.2 - $total, 2, '.', '');
-                            echo "<span>Total: £$vat</span><br><br>";
+                            $vat = number_format((float)$total * 0.2, 2, '.', '');
+                            echo "<span>VAT: £$vat</span><br>";
 
-                            $total = number_format((float)$total * 1.2, 2, '.', ''); // Round to 2dp
+                            $total = number_format((float)$total, 2, '.', ''); // Round to 2dp
                             
-                            echo "<span>Total: £$total</span><br><br>";
+                            echo "<span>Total: £$total</span> <small>(inc VAT)</small>";
                             //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                         }
                     }
