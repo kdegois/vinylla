@@ -46,7 +46,7 @@ if(isset($_POST["submit"])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <title>Vinylla - Create an Ad</title>
+        <title>Vinylla - Upload an image</title>
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Main CSS -->
@@ -76,7 +76,7 @@ if(isset($_POST["submit"])) {
                 }
                 
                 ?>
-                <h4>Upload an image</h4>
+                <h4>Now upload an image</h4>
                 
                 <form action="upload.php?listing_id=<?php echo $listingId ?>" method="post" enctype="multipart/form-data">
                     Select image to upload:

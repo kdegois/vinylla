@@ -9,6 +9,13 @@ if (loggedIn() == false){
     die();
 }
 
+if(isset($_GET['session_token'])){
+    $sessionToken = $_GET["session_token"];
+}
+else {
+    $sessionToken = generateRandomString(128);
+}
+
 
 if (isset($_POST["submit"])){
 
@@ -28,9 +35,16 @@ if (isset($_POST["submit"])){
     }
     // If all inputs are valid, insert the data into the database
     else {
-        $sql = "INSERT INTO listing (user_id, price, artist, title, description) VALUES ('$userId','$price', '$artist', '$title', '$description');";
+        $sql = "INSERT INTO listing (user_id, session_token, price, artist, title, description) VALUES ('$userId', '$sessionToken','$price', '$artist', '$title', '$description');";
         if(mysqli_query($conn, $sql)){
-            $success = "Posted successfully!";
+            $sql = "SELECT * FROM listing WHERE session_token = $sessionToken";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) == 1) {
+                    $row = mysqli_fetch_assoc($result);
+                    $listingID = $row['listing_id'];
+                    header("Location:upload.php?listing_id=$listingID");
+                }
         }
         else {
             $error = "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
@@ -80,7 +94,7 @@ if (isset($_POST["submit"])){
                 ?>
                 <h4>Post your listing</h4>
                 
-                <form action="create-ad.php" method="post">
+                <form action="create-ad.php?session_token=<?php echo $sessionToken; ?>" method="post">
                     <div class="form-group">
                         <label for="year">Artist</label>
                         <input type="text" class="form-control" id="artist" name="artist">
