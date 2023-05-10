@@ -65,13 +65,17 @@ if (isset($_POST['add_itemw'])) {
                             echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
                             echo "<p>" . $row['description'] . "</p>";
                             echo "<span>Price: £" . $row['price'] . "</span>";
-                            echo "<br>";
                             echo "<span>Posted: " . $row['datetime_posted'] . "</span>";
                             // Add to cart button (only when logged in)
-                            if ($userID != 0){
-                                echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\">Add to basket</button></form>";
-                                echo "<form action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-wishlist\" type=\"submit\" name=\"add_itemw\" value=\"" . $row['listing_id'] . "\">Add to wishlist</button></form>";
+                            if ($userID == 0){
+                                $disabled = "disabled";
                             }
+                            else {
+                                $disabled = "enabled";
+                            }
+                            echo "<form style=\"width:auto; padding-right:0;\" action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\" " . $disabled . ">Add to basket</button></form>";
+                            echo "<form style=\"width:auto;\" action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-wishlist\" type=\"submit\" name=\"add_itemw\" value=\"" . $row['listing_id'] . "\" " . $disabled . ">Add to wishlist</button></form>";
+                            if ($userID == 0){echo "<p style=\"margin-top:10px\"><i class=\"bi bi-info-circle-fill\"></i> Please ensure you are logged in.</p>";}
                         }
 
                         else {

@@ -62,7 +62,8 @@ if (isset($_POST['delete_itemwi'])) {
 <body>
 <main class="flex-shrink-0">
     <div class="container">
-
+        <h3>Saved for later</h3>
+        <p>Items that are no longer on sale will be automatically removed from your wishlist.</p>
         <?php
 
             $mysqlWhereStr = "";
