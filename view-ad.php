@@ -62,6 +62,8 @@ if (isset($_POST['add_itemw'])) {
 
                         if (mysqli_num_rows($result) == 1) {
                             $row = mysqli_fetch_assoc($result);
+                            echo "<img src='" . $row['picture_1_uri'] . "' alt='" . $row['title'] . "'>";
+                            echo "<div class='container listing-text'><div class='row'>";
                             echo "<h3>" . $row['title'] . " - " . $row['artist'] . "</h3>";
                             echo "<p>" . $row['description'] . "</p>";
                             echo "<span>Price: £" . $row['price'] . "</span>";
@@ -76,6 +78,7 @@ if (isset($_POST['add_itemw'])) {
                             echo "<form style=\"width:auto; padding-right:0;\" action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-basket\" type=\"submit\" name=\"add_item\" value=\"" . $row['listing_id'] . "\" " . $disabled . ">Add to basket</button></form>";
                             echo "<form style=\"width:auto;\" action=\"view-ad.php?listing_id=" . $listingID . "\" method=\"post\"><button class=\"btn btn-primary btn-add-to-wishlist\" type=\"submit\" name=\"add_itemw\" value=\"" . $row['listing_id'] . "\" " . $disabled . ">Add to wishlist</button></form>";
                             if ($userID == 0){echo "<p style=\"margin-top:10px\"><i class=\"bi bi-info-circle-fill\"></i> Please ensure you are logged in.</p>";}
+                            echo "</div></div>";
                         }
 
                         else {

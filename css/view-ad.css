@@ -4,3 +4,15 @@ h3 {
 .btn-add-to-basket, .btn-add-to-wishlist {
     margin-top: 20px;
 }
+main {
+    margin-top: 80px;
+}
+main .container {
+    max-width: 600px;
+    background: rgba(0,0,0,0.1);
+    padding: 0;
+}
+
+.container .listing-text {
+    padding: 0 20px 20px 20px;
+}
