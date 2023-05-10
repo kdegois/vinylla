@@ -10,22 +10,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li id="search" class="nav-item">
-            <a class="nav-link" href="search.php">Recent</a>
-            </li> 
+          <li id="search" class="nav-item"><a class="nav-link" href="search.php">Recent</a></li> 
           <?php
           if (loggedIn()==true){
               echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";
               echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
-              echo "<li id=\"contact\" class=\nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact us</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\"><i class=\"bi bi-cart\"></i> Cart</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"wishlist.php\"</i> Wishlist</a></li>";
           }
           else {
             echo "<li id=\"login\" class=\"nav-item\"><a class=\"nav-link\" href=\"login.php\">Login</a></li>";
             echo "<li id=\"signup\" class=\"nav-item\"><a class=\"nav-link\" href=\"signup.php\">Signup</a></li>";
-            echo "<li id=\"contact\" class=\nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact us</a></li>";
-
           }
           ?>
         </ul>

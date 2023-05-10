@@ -205,6 +205,3 @@ function addItemToWishlist($conn, $listingID, $userID){
 }
 
 ?>
-
-
-?>

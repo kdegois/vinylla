@@ -53,13 +53,6 @@ require_once "includes/functions.inc.php";
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Search for Vinyl</button>
                 </form>
             </div>
-                    <section class="py-5">
-            <div class="container">
-                <h4>Welcome to Vinylla!</h4>
-                <p>We are a vinyl record store that specializes in rare and hard-to-find vinyl records. Our collection includes everything from classic rock to modern indie, with new arrivals every week. Browse our collection online or visit our store to find the vinyl you've been searching for.</p>
-                <p>Our store is located in the heart of downtown, just a few blocks from the main square. We're open every day from 10am to 8pm, and our friendly staff are always on hand to help you find the perfect vinyl record.</p>
-            </div>
-        </section>
         </main>
         
         <script src="js/bootstrap.bundle.min.js"></script>
