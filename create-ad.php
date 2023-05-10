@@ -113,9 +113,12 @@ if (isset($_POST["submit"])){
                     <div class="form-group">
                         <label for="condition">Vinyl format</label>
                         <select class="form-control" id="condition" name="condition">
-                            <option value="45">7'' 45 RPM Single</option>
-                            <option value="LP">12'' 33 RPM LP</option>
-                            <option value="LP">2" 45 RPM LP</option>
+                            <option value="45">7" 45 RPM Single</option>
+                            <option value="LP">12" 33 RPM LP</option>
+                            <option value="LP">12" 45 RPM LP</option>
+                            <option value="45">10" 45 RPM Single</option>
+                            <option value="EP">12" 33 RPM EP</option>
+                            <option value="EP">12" 45 RPM EP</option>
                         </select>
                     </div>
                     <div class="form-group">
