@@ -14,7 +14,7 @@
           <?php
           if (loggedIn()==true){
               echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";
-              echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\">Cart</a></li>";
+              echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"basket.php\">Basket</a></li>";
               echo "<li id=\"cart\" class=\"nav-item\"><a class=\"nav-link\" href=\"wishlist.php\"</i> Wishlist</a></li>";
               echo "<li id=\"logout\" class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
           }
