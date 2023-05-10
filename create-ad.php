@@ -18,15 +18,26 @@ if (isset($_POST["submit"])){
     $title = $_POST["title"];
     $description = $_POST["description"];
 
-    $sql = "INSERT INTO listing (user_id, price, artist, title, description) VALUES ('$userId','$price', '$artist', '$title', '$description');";
-
-    if(mysqli_query($conn, $sql)){
-        $success = "Posted successfully!";
+    // Check if price is a valid number
+    if (!is_numeric($price)) {
+        $error = "Price must be a number";
     }
+    // Check if artist and title are not empty
+    elseif (empty($artist) || empty($title)) {
+        $error = "Please enter the artist and title";
+    }
+    // If all inputs are valid, insert the data into the database
     else {
-        $error = "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        $sql = "INSERT INTO listing (user_id, price, artist, title, description) VALUES ('$userId','$price', '$artist', '$title', '$description');";
+        if(mysqli_query($conn, $sql)){
+            $success = "Posted successfully!";
+        }
+        else {
+            $error = "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        }
     }
 }
+
 
 ?>
 
@@ -86,10 +97,6 @@ if (isset($_POST["submit"])){
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="year">Listing description</label>
-                        <textarea class="form-control" id="description" name="description"></textarea>
-                    </div>
-                    <div class="form-group">
                         <label for="condition">Vinyl format</label>
                         <select class="form-control" id="condition" name="condition">
                             <option value="45">7'' 45 RPM Single</option>
@@ -111,8 +118,12 @@ if (isset($_POST["submit"])){
                             <option value="Poor">Poor</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="year">Listing description</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
                     <br>
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary" style="float:right;">Submit</button>
                 </form>
             </div>
         </main>
