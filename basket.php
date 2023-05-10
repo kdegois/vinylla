@@ -50,6 +50,9 @@ if (isset($_POST['delete_item'])) {
             h3 {
                 padding-top: 20px;
             }
+            .remove-button {
+                float: right;
+            }
         </style>
     </head>
     <body>
@@ -97,27 +100,22 @@ if (isset($_POST['delete_item'])) {
                         $result = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($result) >= 1){
+                            $total = 0;
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
+                                echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary remove-button\" type=\"submit\" name=\"delete_item\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
                                 echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
                                 echo "<ul>";
                                 echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
                                 echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
                                 echo "</ul>";
                                 echo "</a>";
-                                echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_item\" value=\"" . $row['listing_id'] . "\">Remove</button></form>";
                                 $total = $total + $row['price'];
                             }
+                            $total = number_format((float)$total, 2, '.', ''); // Round to 2dp
+                            echo "<span>Total: £$total</span><br><br>";
                             //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                         }
-                        echo "<tr>";
-                        echo "<td></b>Total Price </b></td>";
-                        echo "<td>£ $total</td>";
-                        echo "<br></br>";
-                        echo "<a href 'basket.php?action=clearall'>";
-                        echo "<form action=\"basket.php\" method=\"post\"><button class=\"btn btn-primary\" type=\"submit\" name=\"delete_all_item\" value=\"" . $row['listing_id'] . "\">Clear All</button></form>";
-                        echo "</a>";
-                        echo"</tr>";  
                     }
                 ?>
 
