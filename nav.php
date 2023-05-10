@@ -10,7 +10,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li id="search" class="nav-item"><a class="nav-link" href="search.php">Home</a></li> 
+          <li id="search" class="nav-item"><a class="nav-link" href="search.php">Recent</a></li> 
           <?php
           if (loggedIn()==true){
               echo "<li id=\"create-ad\" class=\"nav-item\"><a class=\"nav-link\" href=\"create-ad.php\">Post Ad</a></li>";

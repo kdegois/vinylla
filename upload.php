@@ -9,11 +9,11 @@ if (loggedIn() == false){
     die();
 }
 
-if (isset($_GET["listing_id"])){
-    $listingId = $_GET["listing_id"];
+if (isset($_GET["session_token"])){
+    $sessionToken = $_GET["session_token"];
 }
 else {
-    die("No listing ID given!");
+    die("No session token!");
 }
 
 
@@ -27,7 +27,7 @@ if(isset($_POST["submit"])) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         $success = "Your image has been uploaded!";
 
-        $sql = "UPDATE listing SET picture_1_uri = '$target_file' WHERE listing_id = $listingId;";
+        $sql = "UPDATE listing SET picture_1_uri = '$target_file' WHERE session_token = '$sessionToken';";
         
         mysqli_query($conn, $sql);
     }
@@ -78,7 +78,7 @@ if(isset($_POST["submit"])) {
                 ?>
                 <h4>Now upload an image</h4>
                 
-                <form action="upload.php?listing_id=<?php echo $listingId ?>" method="post" enctype="multipart/form-data">
+                <form action="upload.php?session_token=<?php echo $sessionToken ?>" method="post" enctype="multipart/form-data">
                     Select image to upload:
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <input type="submit" value="Upload Image" name="submit">

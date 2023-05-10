@@ -3,17 +3,19 @@
 require_once "includes/functions.inc.php";
 require_once "includes/dbconnect.inc.php";
 
-//If user is logged out send them to login page
+// If user is logged out send them to login page
 if (loggedIn() == false){
     header("Location: login.php");
     die();
 }
 
+
+// Set a random session token
 if(isset($_GET['session_token'])){
     $sessionToken = $_GET["session_token"];
 }
 else {
-    $sessionToken = generateRandomString(128);
+    $sessionToken = generateRandomString(128); // This should check the DB to see if this exists
 }
 
 
@@ -35,19 +37,14 @@ if (isset($_POST["submit"])){
     }
     // If all inputs are valid, insert the data into the database
     else {
+        // Post the ad to the DB
         $sql = "INSERT INTO listing (user_id, session_token, price, artist, title, description) VALUES ('$userId', '$sessionToken','$price', '$artist', '$title', '$description');";
+        // If successful send user to upload image page with a session token
         if(mysqli_query($conn, $sql)){
-            $sql = "SELECT * FROM listing WHERE session_token = $sessionToken";
-                $result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) == 1) {
-                    $row = mysqli_fetch_assoc($result);
-                    $listingID = $row['listing_id'];
-                    header("Location:upload.php?listing_id=$listingID");
-                }
+            header("Location:upload.php?session_token=$sessionToken");
         }
         else {
-            $error = "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+            $error = "Couldn't post your ad. Database error. Please try again.";
         }
     }
 }
