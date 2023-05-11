@@ -19,24 +19,8 @@ require_once("includes/dbconnect.inc.php");
         <link href="css/main.css" rel="stylesheet">
         <!-- Sticky footer navbar -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-        <!-- Custom style for search page -->
-        <style>
-            a.listing {
-                background: rgba(0,0,0,0.2);;
-                display: block;
-                color: var(--bs-body-color);
-                text-decoration: none;
-                padding: 20px;
-                margin: 20px 0;
-                border-radius: 5px;
-            }
-            a.listing:hover {
-                background: rgba(0,0,0,0.3);;
-            }
-            h3 {
-                padding-top: 20px;
-            }
-        </style>
+        <!-- Listing pages CSS -->
+        <link href="css/listing.css" rel="stylesheet">
     </head>
     <body>
 
@@ -98,11 +82,14 @@ require_once("includes/dbconnect.inc.php");
                     if (mysqli_num_rows($result) >= 1){
                         while($row = mysqli_fetch_assoc($result)) {
                             echo "<a class=\"listing\" href=\"view-ad.php?listing_id=" . $row['listing_id'] . "\">";
+                            echo "<img width=\"100px\" style=\"float: left;\" src='" . $row['picture_1_uri'] . "' alt='" . $row['title'] . "'>";
+                            echo "<div class=\"listing-text\">";
                             echo "<h4>" . $row['title'] . " - " . $row['artist'] . "</h4>";
                             echo "<ul>";
                             echo "<li>Price (Pcm): £" . $row['price'] . "</li>";
                             echo "<li>Posted: " . $row['datetime_posted'] . "</li>";
                             echo "</ul>";
+                            echo "</div>";
                             echo "</a>";
                         }
                     }

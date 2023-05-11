@@ -1,0 +1,21 @@
+a.listing {
+    background: rgba(0,0,0,0.2);;
+    display: block;
+    color: var(--bs-body-color);
+    text-decoration: none;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+}
+a.listing:hover {
+    background: rgba(0,0,0,0.3);;
+}
+h3 {
+    padding-top: 20px;
+}
+.listing-text {
+    float: left;
+    padding-left: 20px;
+}
