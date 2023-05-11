@@ -39,6 +39,11 @@ function generateRandomString($length) {
     return $randomString;
 }
 
+function clearCart($conn, $userID){
+    $sql = "UPDATE user SET cart = '' WHERE user_id = $userID";
+    mysqli_query($conn, $sql);
+}
+
 // Remove item from cart
 function removeItemFromCart($conn, $listingID, $userID){
     $sql = "SELECT * FROM user WHERE user_id = $userID";

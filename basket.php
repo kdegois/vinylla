@@ -20,7 +20,6 @@ if (isset($_POST['checkout'])) {
     header("Location: checkout.php");
     die();
 }
-//testig
 ?>
 
 <!doctype html>
@@ -122,7 +121,6 @@ if (isset($_POST['checkout'])) {
                             $total = number_format((float)$total, 2, '.', ''); // Round to 2dp
                             
                             echo "<span>Total: £$total</span> <small>(inc VAT)</small>";
-                            //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
                             echo "<form method=\"post\" action=\"basket.php\">";
                             echo "<button name=\"checkout\" class=\"btn btn-primary\" style=\"float: right\">Checkout</button>";
                             echo "</form>";
