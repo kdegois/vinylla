@@ -44,7 +44,7 @@ require_once("includes/dbconnect.inc.php");
         if(isset($_GET['term'])){
             $term = $_GET['term'];
             // Add search term to filters
-            $filters .= " AND title LIKE '%$term%'";
+            $filters = "WHERE title LIKE '%$term%' OR artist LIKE '%$term%'";
         }
 
         ?>
@@ -75,7 +75,7 @@ require_once("includes/dbconnect.inc.php");
 
                 <?php
 
-                    $sql = "SELECT * FROM listing WHERE 1 $filters ORDER BY $sort";
+                    $sql = "SELECT * FROM listing $filters ORDER BY $sort";
 
                     $result = mysqli_query($conn, $sql);
 
