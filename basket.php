@@ -16,6 +16,10 @@ if (isset($_POST['delete_item'])) {
     $removeListingID = $_POST['delete_item'];
     removeItemFromCart($conn, $removeListingID,$userID);
 }
+if (isset($_POST['checkout'])) {
+    header("Location: checkout.php");
+    die();
+}
 //testig
 ?>
 
@@ -119,6 +123,9 @@ if (isset($_POST['delete_item'])) {
                             
                             echo "<span>Total: £$total</span> <small>(inc VAT)</small>";
                             //echo "<button name=\"checkout\" class=\"btn btn-primary\">Checkout</button>";
+                            echo "<form method=\"post\" action=\"basket.php\">";
+                            echo "<button name=\"checkout\" class=\"btn btn-primary\" style=\"float: right\">Checkout</button>";
+                            echo "</form>";
                         }
                     }
                 ?>
